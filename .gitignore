@@ -5,3 +5,44 @@
 /resources/
 public/
 assets/jsconfig.json
+.hugo_build.lock
+
+# Go
+go.sum
+
+# If you publish GitHub Pages from /docs, DO NOT ignore it.
+# Otherwise, ignore /docs (uncomment next line):
+# /docs/
+
+# Hugo Modules vendor dir (ignore if you don’t vendor modules)
+# If you DO vendor modules for reproducibility, remove this ignore.
+# https://gohugo.io/hugo-modules/
+# Note: commit go.mod and go.sum
+/_vendor/
+
+# Node / build tooling (PostCSS, esbuild, etc.)
+node_modules/
+.sass-cache/
+.cache/
+.parcel-cache/
+dist/
+tmp/
+temp/
+
+# Local env & secrets
+.env
+.env.*
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.log
+*~
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc

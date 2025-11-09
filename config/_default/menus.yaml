@@ -4,21 +4,21 @@
 #   The weight parameter defines the order that the links will appear in.
 
 main:
-  - name: Tour
-    url: tour
+  - name: Home
+    url: /
     weight: 10
-  - name: News
-    url: post
+  - name: Team
+    url: team
     weight: 20
-  - name: People
-    url: people
-    weight: 30
-  - name: Events
-    url: event
-    weight: 40
   - name: Publications
     url: publication
-    weight: 50
-  - name: Contact
-    url: contact
-    weight: 60
+    weight: 30
+  - name: News
+    url: news
+    weight: 40
+  # - name: Events
+  #   url: event
+  #   weight: 40
+  # - name: Contact
+  #   url: contact
+  #   weight: 60
