@@ -7,7 +7,7 @@
 
 appearance:
   theme_day: minimal
-  theme_night:
+  theme_night: dark
   font: native
   font_size: L
 
@@ -15,9 +15,9 @@ appearance:
 
 marketing:
   seo:
-    site_type: Organization
-    local_business_type: ''
-    org_name: ''
+    site_type: 'Organization'
+    local_business_type: 'ResearchOrganization'
+    org_name: 'Information Security and Privacy Research Group'
     description: 'Website for the Information Security and Privacy Research Group at UNSW'
     twitter: 'GetResearchDev'
   analytics:
@@ -72,7 +72,7 @@ features:
   privacy_pack:
     enable: false
   repository:
-    url: 'https://github.com/<username>/<repository>'
+    url: 'https://github.com/IsPri-UNSW/IsPri-UNSW.github.io'
     content_dir: content
     branch: main
   avatar:
