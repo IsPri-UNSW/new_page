@@ -63,9 +63,9 @@ social:
   - icon: researchgate
     icon_pack: fab
     link: https://www.researchgate.net/profile/Erik-Buchholz
-  - icon: twitter
-    icon_pack: fab
-    link: https://twitter.com/x20ckx
+#   - icon: twitter
+#     icon_pack: fab
+#     link: https://twitter.com/x20ckx
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # - icon: cv
