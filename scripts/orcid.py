@@ -491,6 +491,44 @@ def deduplicate_orcid_works(works: List[Dict[str, Any]]) -> List[Dict[str, Any]]
     return merged
 
 
+def _is_valid_work(work: Dict[str, Any]) -> bool:
+    """
+    Check if a work has valid year/date and author information.
+    
+    :param work: Work dictionary
+    :returns: True if work has valid year and authors, False otherwise
+    """
+    # Check for valid year
+    year = work.get("year")
+    if not year:
+        log.debug(f"Skipping work without year: {work.get('title', 'Unknown')}")
+        return False
+    
+    # Validate year is a reasonable number (4 digits)
+    try:
+        year_int = int(year)
+        if year_int < 1900 or year_int > 2100:
+            log.debug(f"Skipping work with invalid year {year}: {work.get('title', 'Unknown')}")
+            return False
+    except (ValueError, TypeError):
+        log.debug(f"Skipping work with non-numeric year {year}: {work.get('title', 'Unknown')}")
+        return False
+    
+    # Check for authors
+    authors = work.get("authors")
+    if not authors or not isinstance(authors, list) or len(authors) == 0:
+        log.debug(f"Skipping work without authors: {work.get('title', 'Unknown')}")
+        return False
+    
+    # Check that at least one author has a name
+    has_named_author = any(author.get("name") for author in authors if isinstance(author, dict))
+    if not has_named_author:
+        log.debug(f"Skipping work without named authors: {work.get('title', 'Unknown')}")
+        return False
+    
+    return True
+
+
 def _bibtex_to_works(bib_db: BibDatabase) -> List[Dict[str, Any]]:
     """
     Convert BibTeX database entries to work dictionaries for comparison.
@@ -770,6 +808,13 @@ def orcid_to_bibtex(orcid_id: str, output_dir: str | Path = BIBTEX_DIR, refetch_
     if data:
         data = enrich_orcid_works(data)
         data = deduplicate_orcid_works(data)
+        
+        # Filter out works without valid year/date or author information
+        original_count = len(data)
+        data = [work for work in data if _is_valid_work(work)]
+        if original_count > len(data):
+            log.info(f"Filtered out {original_count - len(data)} works without valid year/date or authors")
+        
         new_bib_db = works_to_bibtex(data)
         
         # Merge with existing database (only if not refetch_all mode)
