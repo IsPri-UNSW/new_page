@@ -37,6 +37,9 @@ interests:
 #       institution: Massachusetts Institute of Technology
 #       year: 2008
 
+# ORCID ID for automated publication fetching (if enabled in Config)
+orcid: 0000-0001-9962-5665
+
 # Social/Academic Networking
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the

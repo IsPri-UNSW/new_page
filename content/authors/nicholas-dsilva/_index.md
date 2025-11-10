@@ -24,6 +24,9 @@ organizations:
 #   - Interest 1
 #   - Interest 2
 
+# ORCID ID for automated publication fetching (if enabled in Config)
+orcid: 0009-0008-6195-7662
+
 # Social/Academic Networking
 social:
   - icon: home

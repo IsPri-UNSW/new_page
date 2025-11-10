@@ -24,6 +24,9 @@ organizations:
 #   - Interest 1
 #   - Interest 2
 
+# ORCID ID for automated publication fetching (if enabled in Config)
+orcid: 0009-0002-0140-4085
+
 # Social/Academic Networking
 social:
   - icon: google-scholar

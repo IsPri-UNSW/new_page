@@ -23,6 +23,8 @@ organizations:
 # interests:
 #   - Interest 1
 #   - Interest 2
+# ORCID ID for automated publication fetching (if enabled in Config)
+orcid: 0000-0001-7701-8311
 
 # Social/Academic Networking
 social:

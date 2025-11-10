@@ -817,7 +817,7 @@ def bibtex_to_markdown(orcid_id: str, bibtex_dir: str | Path = BIBTEX_DIR, overw
         return
     
     # Output directory for markdown files
-    output_dir = Path(MARKDOWN_DIR) / orcid_id
+    output_dir = Path(MARKDOWN_DIR)
     output_dir.mkdir(parents=True, exist_ok=True)
     
     # Create _index.md for Hugo page bundle if it doesn't exist

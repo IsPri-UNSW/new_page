@@ -40,14 +40,14 @@ if __name__ == '__main__':
     log.debug('Root path: %s', ROOT_PATH)
 
     orcid_ids = []
-    for path in glob.glob(os.path.join(ROOT_PATH, 'content', 'team', 'people', '*.md')):
+    for path in glob.glob(os.path.join(ROOT_PATH, 'content', 'authors', '*/', '_index.md')):
         log.debug('Processing %s', path)
         try:
             post = frontmatter.load(path)
         except Exception:
             log.error('Failed to load %s', path)
             continue
-        orcid = post.get('orcid_id')
+        orcid = post.get('orcid')
         if orcid:
             try:
                 orcid_to_bibtex(orcid, refetch_all=args.refetch_all)

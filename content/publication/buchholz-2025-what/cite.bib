@@ -1,0 +1,13 @@
+@misc{Buchholz2025what,
+ abstract = {While location trajectories offer valuable insights, they also reveal sensitive personal information. Differential Privacy (DP) offers formal protection, but achieving a favourable utility-privacy trade-off remains challenging. Recent works explore deep learning-based generative models to produce synthetic trajectories. However, current models lack formal privacy guarantees and rely on conditional information derived from real data during generation. This work investigates the utility cost of enforcing DP in such models, addressing three research questions across two datasets and eleven utility metrics. (1) We evaluate how DP-SGD, the standard DP training method for deep learning, affects the utility of state-of-the-art generative models. (2) Since DP-SGD is limited to unconditional models, we propose a novel DP mechanism for conditional generation that provides formal guarantees and assess its impact on utility. (3) We analyse how model types - Diffusion, VAE, and GAN - affect the utility-privacy trade-off. Our results show that DP-SGD significantly impacts performance, although some utility remains if the datasets is sufficiently large. The proposed DP mechanism improves training stability, particularly when combined with DP-SGD, for unstable models such as GANs and on smaller datasets. Diffusion models yield the best utility without guarantees, but with DP-SGD, GANs perform best, indicating that the best non-private model is not necessarily optimal when targeting formal guarantees. In conclusion, DP trajectory generation remains a challenging task, and formal guarantees are currently only feasible with large datasets and in constrained use cases.},
+ archiveprefix = {arXiv},
+ author = {Erik Buchholz and Natasha Fernandes and David D. Nguyen and Alsharif Abuadbba and Surya Nepal and Salil S. Kanhere},
+ doi = {10.48550/arxiv.2506.09312},
+ eprint = {2506.09312},
+ eprinttype = {arXiv},
+ language = {en},
+ month = {06},
+ title = {What is the Cost of Differential Privacy for Deep Learning-Based Trajectory Generation?},
+ url = {https://doi.org/10.48550/ARXIV.2506.09312},
+ year = {2025}
+}
