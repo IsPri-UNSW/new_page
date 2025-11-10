@@ -8,14 +8,26 @@ sections:
   - block: hero
     content:
       title: |
-        Wowchemy
-        Research Group
+        Welcome to the **IsPri UNSW** Research Group
       image:
-        filename: welcome.jpg
+        filename: 'carousel/team_0.jpg'
       text: |
         <br>
         
-        The **Wowchemy Research Group** has been a center of excellence for Artificial Intelligence research, teaching, and practice since its founding in 2016.
+        The Information Security and Privacy Research Group’s mission is to conduct advanced applied security research and devise practical solutions to address real-world information security and privacy challenges.
+
+  - block: markdown
+    content:
+      title: Description
+      subtitle: ''
+      text: |
+        The group’s members have an established track record of conducting research with impact and have secured major national and international research grants from both government and industry. Areas include: security of critical infrastructure; secure software systems and communication protocols; secure authentication and identity management; security of AI algorithms and systems; security and privacy by design solutions; security and privacy of social systems, and blockchain security and privacy.
+    design:
+      columns: '1'
+      # background:
+      # spacing:
+      #   padding: ['20px', '0', '20px', '0']
+      # css_class: fullscreen
   
   - block: collection
     content:
@@ -45,7 +57,7 @@ sections:
       columns: '1'
       background:
         image: 
-          filename: coders.jpg
+          filename: 'carousel/team_1.jpg'
           filters:
             brightness: 1
           parallax: false
@@ -58,7 +70,7 @@ sections:
 
   - block: collection
     content:
-      title: Latest Preprints
+      title: Latest Publications
       text: ""
       count: 5
       filters:
