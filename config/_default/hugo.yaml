@@ -7,6 +7,12 @@ title: IsPri UNSW # Website name
 baseURL: 'https://ispri-unsw.github.io/' # Website URL
 
 ############################
+## THEME
+############################
+
+theme: blox-bootstrap
+
+############################
 ## LANGUAGE
 ############################
 

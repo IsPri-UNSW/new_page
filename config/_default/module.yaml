@@ -7,4 +7,5 @@
 imports:
   - path: github.com/HugoBlox/hugo-blox-builder/modules/blox-plugin-decap-cms
   - path: github.com/HugoBlox/hugo-blox-builder/modules/blox-plugin-netlify
-  - path: github.com/HugoBlox/hugo-blox-builder/modules/blox-bootstrap/v5
+  # Using local theme instead of remote module
+  # - path: github.com/HugoBlox/hugo-blox-builder/modules/blox-bootstrap/v5
