@@ -1,0 +1,4 @@
+academic
+bibtexparser
+python-frontmatter
+requests
