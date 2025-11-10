@@ -1,9 +1,9 @@
 ---
 # Display name
-title: Salil Kanhere
+title: Salil S. Kanhere
 
 # Full Name (for SEO)
-first_name: Salil
+first_name: Salil S.
 last_name: Kanhere
 
 # Is this the primary user of the site?
