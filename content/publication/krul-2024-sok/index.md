@@ -84,4 +84,4 @@ links:
   url: https://doi.org/10.56553/popets-2024-0079
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

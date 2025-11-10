@@ -71,4 +71,4 @@ links:
   url: https://doi.org/10.4108/eai.13-7-2018.164628
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

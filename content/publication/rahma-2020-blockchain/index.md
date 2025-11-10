@@ -75,4 +75,4 @@ links:
   url: https://doi.org/10.1109/TRUSTCOM50675.2020.00128
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

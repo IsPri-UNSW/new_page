@@ -75,4 +75,4 @@ links:
   url: https://doi.org/10.1109/PERCOMWORKSHOPS51409.2021.9431001
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

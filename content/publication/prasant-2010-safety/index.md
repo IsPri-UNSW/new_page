@@ -75,4 +75,4 @@ links:
   url: https://doi.org/10.1109/MCOM.2010.5439078
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

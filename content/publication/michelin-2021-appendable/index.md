@@ -78,4 +78,4 @@ links:
   url: https://doi.org/10.4018/978-1-7998-5839-3.ch004
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

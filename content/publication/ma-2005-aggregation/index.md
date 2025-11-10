@@ -73,4 +73,4 @@ links:
   url: https://doi.org/10.1109/VETECF.2005.1558126
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

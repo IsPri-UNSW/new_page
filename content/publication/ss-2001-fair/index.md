@@ -73,4 +73,4 @@ links:
   url: https://doi.org/10.1109/HPSR.2001.923594
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

@@ -73,4 +73,4 @@ links:
   url: https://doi.org/10.1002/WCM.913
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

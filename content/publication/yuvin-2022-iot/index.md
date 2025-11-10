@@ -75,4 +75,4 @@ links:
   url: https://doi.org/10.1109/ICC45855.2022.9839269
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

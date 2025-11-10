@@ -74,4 +74,4 @@ links:
   url: https://doi.org/10.1111/COIN.12548
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

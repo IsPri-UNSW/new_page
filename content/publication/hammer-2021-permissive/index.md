@@ -74,4 +74,4 @@ links:
   url: https://doi.org/10.3233/JCS-211385
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

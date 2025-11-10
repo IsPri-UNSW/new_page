@@ -74,4 +74,4 @@ links:
   url: https://doi.org/10.1109/PCCC.2005.1460560
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

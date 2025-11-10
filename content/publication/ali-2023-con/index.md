@@ -78,4 +78,4 @@ links:
   url: https://doi.org/10.1016/j.cose.2023.103367
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

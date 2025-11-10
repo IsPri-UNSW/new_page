@@ -71,4 +71,4 @@ links:
   url: https://publikationen.sulb.uni-saarland.de/handle/20.500.11880/29104
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

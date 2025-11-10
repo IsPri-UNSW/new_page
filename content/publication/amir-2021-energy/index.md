@@ -78,4 +78,4 @@ links:
   url: https://doi.org/10.1109/CCNC49032.2021.9369472
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

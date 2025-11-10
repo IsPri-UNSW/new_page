@@ -70,4 +70,4 @@ links:
   url: http://dx.doi.org/10.1109/mdat.2019.2961325
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

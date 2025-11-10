@@ -75,4 +75,4 @@ links:
   url: https://doi.org/10.1561/2500000046
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

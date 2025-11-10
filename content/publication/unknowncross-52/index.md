@@ -27,4 +27,3 @@ url_source: ''
 url_video: ''
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

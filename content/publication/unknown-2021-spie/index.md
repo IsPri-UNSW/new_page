@@ -72,4 +72,4 @@ links:
   url: http://dx.doi.org/10.1117/1.jmi.8.3.034501
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

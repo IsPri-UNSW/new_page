@@ -78,4 +78,4 @@ links:
   url: https://doi.org/10.24963/kr.2023/78
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

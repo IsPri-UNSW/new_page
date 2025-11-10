@@ -77,4 +77,4 @@ links:
   url: https://doi.org/10.1109/BLOCKCHAIN53845.2021.00048
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

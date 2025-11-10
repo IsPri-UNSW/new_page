@@ -77,4 +77,4 @@ links:
   url: https://doi.org/10.1109/TEM.2020.2989779
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

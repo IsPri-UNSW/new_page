@@ -105,4 +105,4 @@ links:
   url: https://doi.org/10.14722/laser-acsac.2020.23088
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+
