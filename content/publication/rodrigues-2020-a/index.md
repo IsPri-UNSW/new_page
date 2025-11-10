@@ -19,7 +19,7 @@ author_notes: []
 date: '2020-01-01'
 
 # Date to publish webpage (NOT necessarily Bibtex publication's date).
-publishDate: '2025-11-10T01:45:04.497667Z'
+publishDate: '2025-11-10T23:42:09.786360Z'
 
 # Publication type.
 # A single CSL publication type but formatted as a YAML list (for Hugo requirements).
@@ -75,4 +75,4 @@ links:
   url: https://doi.org/10.4018/978-1-5225-9478-9.ch010
 ---
 
-
+Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
