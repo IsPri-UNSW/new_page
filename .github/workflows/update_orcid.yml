@@ -1,0 +1,39 @@
+name: Update ORCID data
+
+on:
+  schedule:
+    - cron: '0 4 * * 6'  # every Saturday at 04:00 UTC (one day before the Hugo build)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-orcid:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install jq
+        run: |
+          sudo apt-get update && sudo apt-get install -y jq
+      - name: Gather ORCID IDs and fetch
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r scripts/requirements.txt
+          python3 scripts/fetch_orcid.py
+      - name: Commit and push
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Auto-update ORCID data"
+          file_pattern: "content/bibtex/* content/publications/*"
+          branch: main
+          push: true
+          author_name: github-actions
+          author_email: actions@github.com

@@ -1,0 +1,109 @@
+@inproceedings{Buchholz2022reconstruction,
+ abstract = {Location trajectories collected by smartphones and other devices represent a valuable data source for applications such as location-based services. Likewise, trajectories have the potential to reveal sensitive information about individuals, e.g., religious beliefs or sexual orientations. Accordingly, trajectory datasets require appropriate sanitization.  Due to their strong theoretical privacy guarantees, differential private publication mechanisms receive much attention.  However, the large amount of noise required to achieve differential privacy yields structural differences, e.g., ship trajectories passing over land. We propose a deep learning-based Reconstruction Attack on Protected Trajectories (RAoPT), that leverages the mentioned differences to partly reconstruct the original trajectory from a differential private release. The evaluation shows that our RAoPT model can reduce the Euclidean and Hausdorff distances between the released and original trajectories by over 68% on two real-world datasets under protection with ɛ ≤ 1. In this setting, the attack increases the average Jaccard index of the trajectories' convex hulls, representing a user's activity space, by over 180%. Trained on the GeoLife dataset, the model still reduces the Euclidean and Hausdorff distances by over 60% for T-Drive trajectories protected with a state-of-the-art mechanism (ɛ = 0.1). This work highlights shortcomings of current trajectory publication mechanisms, and thus motivates further research on privacy-preserving publication schemes.},
+ archiveprefix = {arXiv},
+ author = {Erik Buchholz and Sharif Abuadbba and Shuo Wang and Surya Nepal and Salil Kanhere},
+ booktitle = {Proceedings of the 38th Annual Computer Security Applications Conference (ACSAC '22)},
+ doi = {10.1145/3564625.3564628},
+ eprint = {2210.09375},
+ eprinttype = {arXiv},
+ isbn = {978-1-4503-9759-9/22/12},
+ language = {en},
+ month = {12},
+ title = {Reconstruction Attack on Differential Private Trajectory Protection Mechanisms},
+ url = {https://doi.org/10.1145/3564625.3564628},
+ year = {2022}
+}
+
+@inproceedings{Buchholz2024sok,
+ archiveprefix = {arXiv},
+ author = {Erik Buchholz and Alsharif Abuadbba and Shuo Wang and Surya Nepal and Salil S. Kanhere},
+ booktitle = {Proceedings on Privacy Enhancing Technologies (PoPETS)},
+ doi = {10.56553/popets-2024-0068},
+ eprint = {2403.07218},
+ eprinttype = {arXiv},
+ language = {en},
+ month = {07},
+ title = {SoK: Can Trajectory Generation Combine Privacy and Utility?},
+ url = {https://doi.org/10.56553/popets-2024-0068},
+ year = {2024}
+}
+
+@misc{Buchholz2025what,
+ abstract = {While location trajectories offer valuable insights, they also reveal sensitive personal information. Differential Privacy (DP) offers formal protection, but achieving a favourable utility-privacy trade-off remains challenging. Recent works explore deep learning-based generative models to produce synthetic trajectories. However, current models lack formal privacy guarantees and rely on conditional information derived from real data during generation. This work investigates the utility cost of enforcing DP in such models, addressing three research questions across two datasets and eleven utility metrics. (1) We evaluate how DP-SGD, the standard DP training method for deep learning, affects the utility of state-of-the-art generative models. (2) Since DP-SGD is limited to unconditional models, we propose a novel DP mechanism for conditional generation that provides formal guarantees and assess its impact on utility. (3) We analyse how model types - Diffusion, VAE, and GAN - affect the utility-privacy trade-off. Our results show that DP-SGD significantly impacts performance, although some utility remains if the datasets is sufficiently large. The proposed DP mechanism improves training stability, particularly when combined with DP-SGD, for unstable models such as GANs and on smaller datasets. Diffusion models yield the best utility without guarantees, but with DP-SGD, GANs perform best, indicating that the best non-private model is not necessarily optimal when targeting formal guarantees. In conclusion, DP trajectory generation remains a challenging task, and formal guarantees are currently only feasible with large datasets and in constrained use cases.},
+ archiveprefix = {arXiv},
+ author = {Erik Buchholz and Natasha Fernandes and David D. Nguyen and Alsharif Abuadbba and Surya Nepal and Salil S. Kanhere},
+ doi = {10.48550/arxiv.2506.09312},
+ eprint = {2506.09312},
+ eprinttype = {arXiv},
+ language = {en},
+ month = {06},
+ title = {What is the Cost of Differential Privacy for Deep Learning-Based Trajectory Generation?},
+ url = {https://doi.org/10.48550/ARXIV.2506.09312},
+ year = {2025}
+}
+
+@inproceedings{Matzutt2020utilizing,
+ abstract = {Distributed anonymity services, such as onion routing networks or cryptocurrency tumblers, promise privacy protection without trusted third parties. While the security of these services is often well-researched, security implications of their required bootstrapping processes are usually neglected: Users either jointly conduct the anonymization themselves or they need to rely on a set of non-colluding privacy peers. However, the typically small number of privacy peers enable single adversaries to mimic distributed services. We thus present AnonBoot, a Sybil-resistant medium to securely bootstrap distributed anonymity services via public blockchains. AnonBoot enforces that peers periodically create a small proof of work to refresh their eligibility of providing secure anonymity services. A pseudo-random, locally replicable bootstrapping process using on-chain entropy then prevents biasing the election of eligible peers. Our evaluation using Bitcoin as AnonBoot’s underlying blockchain shows its feasibility to maintain a trustworthy repository of 1000 peers with only a small storage footprint while supporting arbitrarily large user bases on top of most blockchains.},
+ author = {Roman Matzutt and Jan Pennekamp and Erik Buchholz and Klaus Wehrle},
+ booktitle = {Proceedings of the 15th ACM ASIA Conference on Computer and Communications Security (ASIACCS '20)},
+ doi = {10.1145/3320269.3384729},
+ issn = {23318422},
+ language = {en},
+ month = {10},
+ title = {Utilizing Public Blockchains for the Sybil-Resistant Bootstrapping of Distributed Anonymity Services},
+ url = {https://doi.org/10.1145/3320269.3384729},
+ year = {2020}
+}
+
+@inproceedings{Merhi2024synthetic,
+ archiveprefix = {arXiv},
+ author = {Jesse Merhi and Erik Buchholz and Salil S. Kanhere},
+ booktitle = {21st Annual International Conference on Privacy, Security & Trust (PST 2024)},
+ doi = {10.1109/pst62714.2024.10788061},
+ eprint = {2407.16938},
+ eprinttype = {arXiv},
+ month = {08},
+ title = {Synthetic Trajectory Generation Through Convolutional Neural Networks},
+ url = {https://doi.org/10.1109/pst62714.2024.10788061},
+ year = {2024}
+}
+
+@inproceedings{Nicholas2024demystifying,
+ archiveprefix = {arXiv},
+ author = {D'Silva, Nicholas and Shahi, Toran and Husveg, Øyvind Timian Dokk and Sanjeeve, Adith and Erik Buchholz and Salil S. Kanhere},
+ booktitle = {Proceedings of the 17th International Conference on Security of Information and Networks (SIN'24)},
+ doi = {10.1109/sin63213.2024.10871881},
+ eprint = {2409.14645},
+ eprinttype = {arXiv},
+ language = {en},
+ month = {12},
+ title = {Demystifying Trajectory Recovery From Ash: An Open-Source Evaluation and Enhancement},
+ url = {https://doi.org/10.1109/sin63213.2024.10871881},
+ year = {2024}
+}
+
+@inproceedings{Pennekamp2020privacy,
+ abstract = {Nowadays, collaborations between industrial companies always go hand in hand with trust issues, i.e., exchanging valuable production data entails the risk of improper use of potentially sensitive information. Therefore, companies hesitate to offer their production data, e.g., process parameters that would allow other companies to establish new production lines faster, against a quid pro quo. Nevertheless, the expected benefits of industrial collaboration, data exchanges, and the utilization of external knowledge are significant. In this paper, we introduce our Bloom filter-based Parameter Exchange (BPE), which enables companies to exchange process parameters privacy-preservingly. We demonstrate the applicability of our platform based on two distinct real-world use cases: injection molding and machine tools. We show that BPE is both scalable and deployable for different needs to foster industrial collaborations. Thereby, we reward data-providing companies with payments while preserving their valuable data and reducing the risks of data leakage.},
+ author = {Jan Pennekamp and Erik Buchholz and Yannik Lockner and Markus Dahlmanns and Tiandong Xi and Marcel Fey and Christian Brecher and Christian Hopmann and Klaus Wehrle},
+ booktitle = {Proceedings of the 36th Annual Computer Security Applications Conference (ACSAC '20)},
+ doi = {10.1145/3427228.3427248},
+ isbn = {9781450388580},
+ language = {en},
+ month = {12},
+ title = {Privacy-Preserving Production Process Parameter Exchange},
+ url = {https://doi.org/10.1145/3427228.3427248},
+ year = {2020}
+}
+
+@inproceedings{Pennekamp2021collaboration,
+ abstract = {Following the recent Internet of Things-induced trends on digitization in general, industrial applications will further evolve as well. With a focus on the domains of manufacturing and production, the Internet of Production pursues the vision of a digitized, globally interconnected, yet secure environment by establishing a distributed knowledge base. Background. As part of our collaborative research of advancing the scope of industrial applications through cybersecurity and privacy, we identified a set of common challenges and pitfalls that surface in such applied interdisciplinary collaborations. Aim. Our goal with this paper is to support researchers in the emerging field of cybersecurity in industrial settings by formalizing our experiences as reference for other research efforts, in industry and academia alike. Method. Based on our experience, we derived a process cycle of performing such interdisciplinary research, from the initial idea to the eventual dissemination and paper writing. This presented methodology strives to successfully bootstrap further research and to encourage further work in this emerging area. Results. Apart from our newly proposed process cycle, we report on our experiences and conduct a case study applying this methodology, raising awareness for challenges in cybersecurity research for industrial applications. We further detail the interplay between our process cycle and the data lifecycle in applied research data management. Finally, we augment our discussion with an industrial as well as an academic view on this research area and highlight that both areas still have to overcome significant challenges to sustainably and securely advance industrial applications. Conclusions. With our proposed process cycle for interdisciplinary research in the intersection of cybersecurity and industrial application, we provide a foundation for further research. We look forward to promising research initiatives, projects, and directions that emerge based on our methodological work.},
+ author = {Jan Pennekamp and Erik Buchholz and Markus Dahlmanns and Ike Kunze and Stefan Braun and Eric Wagner and Matthias Brockmann and Klaus Wehrle and Martin Henze},
+ booktitle = {Proceedings 2020 Learning from Authoritative Security Experiment Results Workshop},
+ doi = {10.14722/laser-acsac.2020.23088},
+ issn = {23318422},
+ language = {en},
+ month = {12},
+ title = {Collaboration is not Evil: A Systematic Look at Security Research for Industrial Use},
+ url = {https://doi.org/10.14722/laser-acsac.2020.23088},
+ year = {2021}
+}

@@ -17,7 +17,7 @@ log = logging.getLogger()
 # Determine root path of the repository - this script is in scripts/
 ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 BIBTEX_DIR = os.path.join(ROOT_PATH, 'content', 'bibtex')
-MARKDOWN_DIR = os.path.join(ROOT_PATH, 'content', 'publications')
+MARKDOWN_DIR = os.path.join(ROOT_PATH, 'content', 'publication')
 
 # Helper functions used across multiple functions
 
