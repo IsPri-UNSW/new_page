@@ -1,4 +1,4 @@
-academic
-bibtexparser
-python-frontmatter
-requests
+academic~=0.11.2
+bibtexparser~=1.4.3
+python-frontmatter~=1.1.0
+requests~=2.32.5
