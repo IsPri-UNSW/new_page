@@ -32,7 +32,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Auto-update ORCID data"
-          file_pattern: "content/bibtex/* content/publications/*"
+          file_pattern: "content/bibtex/* content/publication/*"
           branch: main
           push: true
           author_name: github-actions
