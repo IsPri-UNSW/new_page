@@ -34,6 +34,5 @@ jobs:
           commit_message: "Auto-update ORCID data"
           file_pattern: "content/bibtex/* content/publication/*"
           branch: main
-          push: true
-          author_name: github-actions
-          author_email: actions@github.com
+          commit_user_name: github-actions
+          commit_user_email: actions@github.com
