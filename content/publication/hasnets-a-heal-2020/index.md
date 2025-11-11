@@ -75,4 +75,4 @@ links:
   url: https://publons.com/wos-op/publon/58920798/
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

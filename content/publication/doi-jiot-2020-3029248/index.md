@@ -76,4 +76,4 @@ links:
   url: https://doi.org/10.1109/JIOT.2020.3029248
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

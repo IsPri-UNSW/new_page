@@ -72,4 +72,4 @@ links:
   url: https://doi.org/10.1109/IPCCC.2001.918651
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

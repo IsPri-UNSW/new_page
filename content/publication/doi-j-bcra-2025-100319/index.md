@@ -76,4 +76,4 @@ links:
   url: https://doi.org/10.1016/j.bcra.2025.100319
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

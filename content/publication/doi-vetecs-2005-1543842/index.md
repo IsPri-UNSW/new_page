@@ -75,4 +75,4 @@ links:
   url: https://doi.org/10.1109/VETECS.2005.1543842
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

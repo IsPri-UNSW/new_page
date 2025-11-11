@@ -74,4 +74,4 @@ links:
   url: https://doi.org/10.1109/GLOCOMW.2011.6162388
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

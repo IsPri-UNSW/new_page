@@ -76,4 +76,4 @@ links:
   url: http://arxiv.org/abs/1506.03950
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

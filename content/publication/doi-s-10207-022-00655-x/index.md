@@ -73,4 +73,4 @@ links:
   url: https://doi.org/10.1007/S10207-022-00655-X
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

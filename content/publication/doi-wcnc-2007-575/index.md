@@ -73,4 +73,4 @@ links:
   url: https://doi.org/10.1109/WCNC.2007.575
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+

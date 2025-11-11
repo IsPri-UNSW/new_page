@@ -955,6 +955,9 @@ title: Publications
     
     # Post-process to fix invalid dates
     _fix_invalid_dates(output_dir)
+    
+    # Post-process to remove placeholder text
+    _remove_placeholder_text(output_dir)
 
 
 def _fix_invalid_dates(output_dir: Path) -> None:
@@ -983,6 +986,36 @@ def _fix_invalid_dates(output_dir: Path) -> None:
                     
                     with open(md_file, 'w', encoding='utf-8') as f:
                         f.write(frontmatter.dumps(post))
+                        
+        except Exception as e:
+            log.error(f"Failed to process {md_file}: {e}")
+
+
+def _remove_placeholder_text(output_dir: Path) -> None:
+    """
+    Post-process markdown files to remove placeholder text added by academic CLI.
+    
+    The academic CLI adds a placeholder text at the end of each markdown file:
+    "Add the full text or supplementary notes for the publication here using Markdown formatting."
+    This function removes that placeholder text.
+    """
+    placeholder_text = "Add the **full text** or **supplementary notes** for the publication here using Markdown formatting."
+    
+    for md_file in output_dir.rglob("index.md"):
+        if md_file.name == "_index.md":
+            continue
+        
+        try:
+            post = frontmatter.load(str(md_file))
+            
+            # Check if the content contains the placeholder text
+            if placeholder_text in post.content:
+                # Remove the placeholder text
+                post.content = post.content.replace(placeholder_text, "").strip()
+                log.debug(f"Removed placeholder text from {md_file}")
+                
+                with open(md_file, 'w', encoding='utf-8') as f:
+                    f.write(frontmatter.dumps(post))
                         
         except Exception as e:
             log.error(f"Failed to process {md_file}: {e}")

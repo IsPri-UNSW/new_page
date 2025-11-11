@@ -76,4 +76,4 @@ links:
   url: https://doi.org/10.1016/J.SYSARC.2022.102720
 ---
 
-Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.
+
