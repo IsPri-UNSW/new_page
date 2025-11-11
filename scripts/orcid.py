@@ -1050,7 +1050,7 @@ def _remove_placeholder_text(output_dir: Path) -> None:
     
     The academic CLI adds a placeholder text at the end of each markdown file:
     "Add the full text or supplementary notes for the publication here using Markdown formatting."
-    This function removes that placeholder text.
+    This function removes that placeholder text without modifying the frontmatter.
     """
     placeholder_text = "Add the **full text** or **supplementary notes** for the publication here using Markdown formatting."
     
@@ -1059,16 +1059,19 @@ def _remove_placeholder_text(output_dir: Path) -> None:
             continue
         
         try:
-            post = frontmatter.load(str(md_file))
+            # Read the file content directly to preserve frontmatter formatting
+            with open(md_file, 'r', encoding='utf-8') as f:
+                content = f.read()
             
             # Check if the content contains the placeholder text
-            if placeholder_text in post.content:
+            if placeholder_text in content:
                 # Remove the placeholder text
-                post.content = post.content.replace(placeholder_text, "").strip()
+                content = content.replace(placeholder_text, "").rstrip() + "\n"
                 log.debug(f"Removed placeholder text from {md_file}")
                 
+                # Write back the modified content
                 with open(md_file, 'w', encoding='utf-8') as f:
-                    f.write(frontmatter.dumps(post))
+                    f.write(content)
                         
         except Exception as e:
             log.error(f"Failed to process {md_file}: {e}")
