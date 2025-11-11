@@ -1,44 +1,32 @@
 ---
-title: A Survey of COVID-19 Contact Tracing Apps
+title: Derived categories of centrally-symmetric smooth toric Fano varieties
 
 # Authors
 # A YAML list of author names
 # If you created a profile for a user (e.g. the default `admin` user at `content/authors/admin/`), 
 # write the username (folder name) here, and it will be replaced with their full name and linked to their profile.
 authors:
-- Nadeem Ahmed
-- Regio A. Michelin
-- Wanli Xue
-- Sushmita Ruj
-- Robert Malaney
-- Salil S. Kanhere
-- Aruna Seneviratne
-- Wen Hu
-- Helge Janicke
-- Sanjay K. Jha
-- Regio A. Michelin
-- Salil S. Kanhere
-- Sanjay Jha
+- Matthew Ballard
 
 # Author notes (such as 'Equal Contribution')
 # A YAML list of notes for each author in the above `authors` list
 author_notes: []
 
-date: '2020-01-01'
+date: '2022-01-01'
 
 # Date to publish webpage (NOT necessarily Bibtex publication's date).
-publishDate: '2025-11-10T23:42:09.637620Z'
+publishDate: '2025-11-11T00:08:43.291775Z'
 
 # Publication type.
 # A single CSL publication type but formatted as a YAML list (for Hugo requirements).
 publication_types:
-- article-journal
+- manuscript
 
 # Publication name and optional abbreviated publication name.
-publication: '*IEEE Access*'
+publication: '*Mathematische Nachrichten*'
 publication_short: ''
 
-doi: 10.1109/access.2020.3010226
+doi: 10.1002/mana.201900358
 
 abstract: ''
 
@@ -80,7 +68,7 @@ image:
 projects: []
 links:
 - name: URL
-  url: https://doi.org/10.1109/ACCESS.2020.3010226
+  url: https://doi.org/10.1002/mana.201900358
 ---
 
 Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

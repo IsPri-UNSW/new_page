@@ -1,28 +1,21 @@
 ---
-title: 'DIMY: Enabling privacy-preserving contact tracing'
+title: Variation of geometric invariant theory quotients and derived categories
 
 # Authors
 # A YAML list of author names
 # If you created a profile for a user (e.g. the default `admin` user at `content/authors/admin/`), 
 # write the username (folder name) here, and it will be replaced with their full name and linked to their profile.
 authors:
-- Nadeem Ahmed
-- Regio A. Michelin
-- Wanli Xue
-- Guntur Dharma Putra
-- Sushmita Ruj
-- Salil S. Kanhere
-- Sanjay Jha
-- Guntur Dharma Putra
+- Matthew Ballard
 
 # Author notes (such as 'Equal Contribution')
 # A YAML list of notes for each author in the above `authors` list
 author_notes: []
 
-date: '2022-01-01'
+date: '2019-01-01'
 
 # Date to publish webpage (NOT necessarily Bibtex publication's date).
-publishDate: '2025-11-10T23:42:09.648943Z'
+publishDate: '2025-11-11T00:08:43.285905Z'
 
 # Publication type.
 # A single CSL publication type but formatted as a YAML list (for Hugo requirements).
@@ -30,10 +23,10 @@ publication_types:
 - article-journal
 
 # Publication name and optional abbreviated publication name.
-publication: '*Journal of Network and Computer Applications*'
+publication: '*Journal für die reine und angewandte Mathematik*'
 publication_short: ''
 
-doi: 10.1016/j.jnca.2022.103356
+doi: ''
 
 abstract: ''
 
@@ -75,7 +68,7 @@ image:
 projects: []
 links:
 - name: URL
-  url: https://doi.org/10.1016/j.jnca.2022.103356
+  url: https://www.degruyter.com/journal/key/crll/2019/746/html
 ---
 
 Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

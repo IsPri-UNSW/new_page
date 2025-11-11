@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import shutil
 from typing import List, Dict, Any, Optional
 import unicodedata
 import requests
@@ -915,6 +916,13 @@ def bibtex_to_markdown(bibtex_file: str | Path, overwrite: bool = False) -> None
     # Output directory for markdown files
     output_dir = Path(MARKDOWN_DIR)
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Remove existing directories in output_dir if overwrite is True
+    if overwrite:
+        for item in output_dir.iterdir():
+            if item.is_dir():
+                shutil.rmtree(item)
+                log.debug(f"Removed existing directory: {item}")
     
     # Create _index.md for Hugo page bundle if it doesn't exist
     index_file = output_dir / '_index.md'
