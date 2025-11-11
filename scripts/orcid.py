@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 from pathlib import Path
 import shutil
@@ -8,10 +10,10 @@ import logging
 import re
 import time
 
-from pprint import pprint
 import bibtexparser
 from bibtexparser.bibdatabase import BibDatabase
 from academic.import_bibtex import import_bibtex
+import frontmatter
 
 log = logging.getLogger()
 
@@ -381,16 +383,15 @@ def enrich_orcid_work(work: Dict[str, Any], token: Optional[str] = None, base_ur
                     work["doi"] = mdoi.group(1).strip()
 
             return work
-        except Exception as e:
-            last_err = e
+        except Exception:
             time.sleep((attempt + 1) * backoff)
             continue
     return work
 
-def enrich_orcid_works(data: dict) -> dict:
-    """Enrich all works in the cleaned ORCID data dict."""
+def enrich_orcid_works(data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Enrich all works in the cleaned ORCID data list."""
     works = data if isinstance(data, list) else []
-    enriched_works = []
+    enriched_works: List[Dict[str, Any]] = []
     for work in works:
         enriched = enrich_orcid_work(work)
         enriched_works.append(enriched)
@@ -790,7 +791,8 @@ def orcid_to_bibtex(orcid_id: str, output_dir: str | Path = BIBTEX_DIR, refetch_
     if bib_file.exists() and not refetch_all:
         with open(bib_file, 'r', encoding='utf-8') as f:
             loaded_db = bibtexparser.load(f)
-        log.info(f"Loaded existing BibTeX file with {len(loaded_db.entries)} entries from {bib_file}")
+        if loaded_db:
+            log.info(f"Loaded existing BibTeX file with {len(loaded_db.entries)} entries from {bib_file}")
         existing_works = _bibtex_to_works(loaded_db)
     elif bib_file.exists() and refetch_all:
         log.info(f"Refetch all mode enabled - ignoring existing BibTeX file at {bib_file}")
@@ -936,7 +938,7 @@ title: Publications
 
     import_bibtex(
         bibtex=bibtex_file,
-        pub_dir=output_dir,
+        pub_dir=str(output_dir),
         compact=False,
         normalize=True,
         overwrite=overwrite,
@@ -955,15 +957,13 @@ def _fix_invalid_dates(output_dir: Path) -> None:
     the year is missing from the BibTeX entry. This function removes such
     invalid date fields to prevent Hugo parsing errors.
     """
-    import frontmatter
-    import re
     
     for md_file in output_dir.rglob("index.md"):
         if md_file.name == "_index.md":
             continue
         
         try:
-            post = frontmatter.load(md_file)
+            post = frontmatter.load(str(md_file))
             
             # Check if date field exists and is invalid
             if 'date' in post.metadata:

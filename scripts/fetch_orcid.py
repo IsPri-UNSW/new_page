@@ -59,7 +59,7 @@ if __name__ == '__main__':
             orcid = post.get('orcid')
             if orcid:
                 try:
-                    orcid_to_bibtex(orcid, refetch_all=args.refetch_all)
+                    orcid_to_bibtex(str(orcid), refetch_all=args.refetch_all)
                     log.info('Fetched %s', orcid)
                     orcid_ids.append(orcid)
                 except Exception as e:
