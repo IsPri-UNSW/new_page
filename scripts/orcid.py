@@ -601,41 +601,49 @@ def _filter_existing_works(new_works: List[Dict[str, Any]], existing_works: List
 
 
 def _generate_bibtex_key(work: Dict[str, Any], index: int) -> str:
-    """Generate a BibTeX citation key for a work."""
-    # Try to extract first author's last name
-    authors = work.get("authors", [])
-    if authors and isinstance(authors, list) and len(authors) > 0:
-        first_author = authors[0].get("name", "")
-        # Try to extract last name (assume it's the last word)
-        if first_author:
-            parts = first_author.strip().split()
-            last_name = parts[-1] if parts else "Unknown"
-        else:
-            last_name = "Unknown"
-    else:
-        last_name = "Unknown"
+    """
+    Generate a deterministic BibTeX citation key for a work.
     
-    # Clean the last name for use in citation key
-    last_name = re.sub(r'[^\w]', '', last_name)
+    Uses stable identifiers (DOI, arXiv) or normalized title to ensure
+    the same work always gets the same key across different machines.
+    """
+    # Strategy 1: Use DOI if available (most stable)
+    doi = _norm_doi(work.get("doi"))
+    if doi:
+        # Extract last part of DOI as key component
+        # e.g., "10.1109/sin63213.2024.10871881" -> "sin63213_2024_10871881"
+        doi_suffix = doi.split('/')[-1] if '/' in doi else doi
+        # Clean and limit length
+        key = re.sub(r'[^\w]', '_', doi_suffix).lower()
+        return f"doi_{key}"[:60]  # Limit length
     
-    # Get year
+    # Strategy 2: Use arXiv ID if available
+    arxiv = _norm_arxiv(work.get("arxiv"))
+    if arxiv:
+        # e.g., "2301.12345" -> "arxiv_2301_12345"
+        key = re.sub(r'[^\w]', '_', arxiv).lower()
+        return f"arxiv_{key}"[:60]
+    
+    # Strategy 3: Use normalized title + year (deterministic fallback)
+    title = work.get("title", "")
     year = work.get("year", "")
     
-    # Get first word of title
-    title = work.get("title", "")
     if title:
-        title_words = re.findall(r'\w+', title)
-        first_word = title_words[0].lower() if title_words else "untitled"
+        # Use normalized title (same as deduplication logic)
+        norm_title = _norm_title(title) or "untitled"
+        # Take first 3 words for readability
+        title_words = norm_title.split()[:3]
+        title_part = "_".join(title_words) if title_words else "untitled"
     else:
-        first_word = "untitled"
+        title_part = "untitled"
     
-    # Construct key: LastnameYYYYFirstword or use index as fallback
+    # Construct key: title_year or title_index
     if year:
-        key = f"{last_name}{year}{first_word}"
+        key = f"{title_part}_{year}"
     else:
-        key = f"{last_name}{first_word}{index}"
+        key = f"{title_part}_{index}"
     
-    return key
+    return key[:60]  # Limit length
 
 
 def _format_authors_bibtex(authors: List[Dict[str, Any]]) -> str:
