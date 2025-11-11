@@ -157,6 +157,42 @@ def _merge_authors(dst: Dict[str, Any], src: Dict[str, Any]) -> None:
                 merged.append(a)
         dst["authors"] = merged
 
+def _merge_bibtex_entries(dst_entry: Dict[str, Any], src_entry: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Merge two BibTeX entry dictionaries, preferring non-empty values.
+    
+    :param dst_entry: Destination BibTeX entry (will be modified)
+    :param src_entry: Source BibTeX entry to merge from
+    :returns: Merged entry dictionary
+    """
+    if not dst_entry:
+        return dict(src_entry) if src_entry else {}
+    if not src_entry:
+        return dst_entry
+    
+    # Merge all fields, preferring non-empty values
+    for key, value in src_entry.items():
+        # Skip structural fields that should not be merged
+        if key in ('ID', 'ENTRYTYPE'):
+            continue
+        
+        # Special handling for author field - prefer the longer/more complete list
+        if key == 'author' and isinstance(value, str) and isinstance(dst_entry.get(key), str):
+            # Compare total character length as a proxy for completeness
+            # Longer author strings typically have full names vs. abbreviated names
+            src_len = len(value)
+            dst_len = len(dst_entry[key])
+            if src_len > dst_len:
+                dst_entry[key] = value
+            # Keep destination if it's longer or equal
+            continue
+        
+        # If dst doesn't have this field or has empty value, take from src
+        if key not in dst_entry or _is_empty(dst_entry.get(key)):
+            dst_entry[key] = value
+    
+    return dst_entry
+
 def fetch_orcid_json(orcid_id: str) -> dict:
     """Fetch ORCID works for a given ORCID ID."""
     url = f'https://pub.orcid.org/v3.0/{orcid_id}/works'
@@ -448,6 +484,12 @@ def deduplicate_orcid_works(works: List[Dict[str, Any]]) -> List[Dict[str, Any]]
         # merge fields
         _merge_dict_preferring_non_empty(main, w)
         _merge_authors(main, w)
+        
+        # Also merge _bibtex_entry if present
+        if "_bibtex_entry" in main and "_bibtex_entry" in w:
+            main["_bibtex_entry"] = _merge_bibtex_entries(main["_bibtex_entry"], w["_bibtex_entry"])
+        elif "_bibtex_entry" in w and "_bibtex_entry" not in main:
+            main["_bibtex_entry"] = dict(w["_bibtex_entry"])
 
         # store back
         groups[main_idx]["work"] = main
@@ -471,6 +513,13 @@ def deduplicate_orcid_works(works: List[Dict[str, Any]]) -> List[Dict[str, Any]]
             # merge dicts
             _merge_dict_preferring_non_empty(main, other["work"])
             _merge_authors(main, other["work"])
+            
+            # Also merge _bibtex_entry if present
+            if "_bibtex_entry" in main and "_bibtex_entry" in other["work"]:
+                main["_bibtex_entry"] = _merge_bibtex_entries(main["_bibtex_entry"], other["work"]["_bibtex_entry"])
+            elif "_bibtex_entry" in other["work"] and "_bibtex_entry" not in main:
+                main["_bibtex_entry"] = dict(other["work"]["_bibtex_entry"])
+            
             # move key ownership
             for kd in list(other["keys"]["doi"]):
                 doi_map[kd] = main_idx
@@ -867,8 +916,11 @@ def merge_all_bibtex_files(bibtex_dir: str | Path = BIBTEX_DIR) -> None:
     bibtex_dir = Path(bibtex_dir)
     all_works = []
     
+    # Sort files for deterministic ordering across different machines
+    bib_files = sorted(bibtex_dir.glob("*.bib"))
+    
     # Read all individual .bib files (excluding all.bib itself)
-    for bib_file in bibtex_dir.glob("*.bib"):
+    for bib_file in bib_files:
         if bib_file.name == "all.bib":
             continue
         
@@ -896,6 +948,7 @@ def merge_all_bibtex_files(bibtex_dir: str | Path = BIBTEX_DIR) -> None:
     log.info(f"Loaded {len(all_works)} total works from all BibTeX files")
     
     # Deduplicate based on DOI, arXiv, or title using the existing function
+    # This will now also merge _bibtex_entry objects intelligently
     deduplicated = deduplicate_orcid_works(all_works)
     log.info(f"After deduplication: {len(deduplicated)} unique works")
     
