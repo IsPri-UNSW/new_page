@@ -847,16 +847,67 @@ def orcid_to_bibtex(orcid_id: str, output_dir: str | Path = BIBTEX_DIR, refetch_
         log.info(f"Wrote {len(bib_db.entries)} total BibTeX entries to {bib_file}")
 
 
-def bibtex_to_markdown(orcid_id: str, bibtex_dir: str | Path = BIBTEX_DIR, overwrite: bool = False) -> None:
+def merge_all_bibtex_files(bibtex_dir: str | Path = BIBTEX_DIR) -> None:
+    """
+    Merge all individual ORCID BibTeX files into a single deduplicated all.bib file.
+    
+    :param bibtex_dir: Directory containing the BibTeX files
+    """
+    bibtex_dir = Path(bibtex_dir)
+    all_works = []
+    
+    # Read all individual .bib files (excluding all.bib itself)
+    for bib_file in bibtex_dir.glob("*.bib"):
+        if bib_file.name == "all.bib":
+            continue
+        
+        try:
+            with open(bib_file, 'r', encoding='utf-8') as f:
+                bib_db = bibtexparser.load(f)
+            
+            # Convert BibTeX entries to work dictionaries
+            works = _bibtex_to_works(bib_db)
+            
+            # For each work, also carry over the full BibTeX entry
+            for i, work in enumerate(works):
+                if i < len(bib_db.entries):
+                    work["_bibtex_entry"] = bib_db.entries[i]
+            
+            all_works.extend(works)
+            log.debug(f"Loaded {len(works)} works from {bib_file.name}")
+        except Exception as e:
+            log.error(f"Failed to load {bib_file}: {e}")
+    
+    if not all_works:
+        log.warning("No BibTeX files found to merge")
+        return
+    
+    log.info(f"Loaded {len(all_works)} total works from all BibTeX files")
+    
+    # Deduplicate based on DOI, arXiv, or title using the existing function
+    deduplicated = deduplicate_orcid_works(all_works)
+    log.info(f"After deduplication: {len(deduplicated)} unique works")
+    
+    # Create a new BibDatabase with deduplicated entries
+    merged_db = BibDatabase()
+    merged_db.entries = [work["_bibtex_entry"] for work in deduplicated if "_bibtex_entry" in work]
+    
+    # Write to all.bib
+    all_bib_file = bibtex_dir / "all.bib"
+    with open(all_bib_file, 'w', encoding='utf-8') as f:
+        bibtexparser.dump(merged_db, f)
+    
+    log.info(f"Wrote {len(merged_db.entries)} deduplicated entries to {all_bib_file}")
+
+
+def bibtex_to_markdown(bibtex_file: str | Path, overwrite: bool = False) -> None:
     """
     Convert BibTeX file to Markdown files using the academic package.
     
-    :param orcid_id: ORCID identifier
-    :param bibtex_dir: Directory containing the BibTeX files
+    :param bibtex_file: Path to the BibTeX file to convert
+    :param overwrite: Whether to overwrite existing markdown files
     """
-    import subprocess
-    
-    bibtex_file = Path(bibtex_dir) / f"{orcid_id}.bib"
+    bibtex_file = Path(bibtex_file)
     if not bibtex_file.exists():
         log.warning(f"BibTeX file not found: {bibtex_file}")
         return

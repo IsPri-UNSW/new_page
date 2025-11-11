@@ -4,9 +4,10 @@ import frontmatter
 import os
 import logging
 import argparse
+from pathlib import Path
 
 from helpers import setup_logging
-from orcid import orcid_to_bibtex, bibtex_to_markdown, BIBTEX_DIR
+from orcid import orcid_to_bibtex, bibtex_to_markdown, merge_all_bibtex_files, BIBTEX_DIR
 
 log = logging.getLogger()
 
@@ -27,6 +28,13 @@ if __name__ == '__main__':
         action='store_true',
         help='Regenerate Markdown files from existing BibTeX files'
     )
+    parser.add_argument(
+        '-s',
+        '--skip',
+        action='store_true',
+        default=False,
+        help='Skip fetching and only regenerate Markdown files'
+    )
     args = parser.parse_args()
     
     # Activate Debug logging
@@ -39,31 +47,40 @@ if __name__ == '__main__':
     ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     log.debug('Root path: %s', ROOT_PATH)
 
-    orcid_ids = []
-    for path in glob.glob(os.path.join(ROOT_PATH, 'content', 'authors', '*/', '_index.md')):
-        log.debug('Processing %s', path)
-        try:
-            post = frontmatter.load(path)
-        except Exception:
-            log.error('Failed to load %s', path)
-            continue
-        orcid = post.get('orcid')
-        if orcid:
+    if not args.skip:
+        orcid_ids = []
+        for path in glob.glob(os.path.join(ROOT_PATH, 'content', 'authors', '*/', '_index.md')):
+            log.debug('Processing %s', path)
             try:
-                orcid_to_bibtex(orcid, refetch_all=args.refetch_all)
-                log.info('Fetched %s', orcid)
-                orcid_ids.append(orcid)
-            except Exception as e:
-                log.error('Failed %s: %s', orcid, e)
+                post = frontmatter.load(path)
+            except Exception:
+                log.error('Failed to load %s', path)
+                continue
+            orcid = post.get('orcid')
+            if orcid:
+                try:
+                    orcid_to_bibtex(orcid, refetch_all=args.refetch_all)
+                    log.info('Fetched %s', orcid)
+                    orcid_ids.append(orcid)
+                except Exception as e:
+                    log.error('Failed %s: %s', orcid, e)
     
-    # Convert BibTeX files to Markdown
-    log.info('Converting BibTeX files to Markdown...')
-    for orcid in orcid_ids:
-        try:
-            bibtex_to_markdown(orcid, overwrite=(args.refetch_all or args.regenerate_markdown))
-            log.info('Converted BibTeX to Markdown for %s', orcid)
-        except Exception as e:
-            log.error('Failed to convert BibTeX for %s: %s', orcid, e)
+    # Merge all BibTeX files into a single deduplicated all.bib
+    log.info('Merging all BibTeX files into all.bib...')
+    try:
+        merge_all_bibtex_files()
+        log.info('Successfully merged BibTeX files')
+    except Exception as e:
+        log.error(f'Failed to merge BibTeX files: {e}')
+    
+    # Convert the merged all.bib to Markdown
+    log.info('Converting merged BibTeX file to Markdown...')
+    try:
+        all_bib_file = Path(BIBTEX_DIR) / 'all.bib'
+        bibtex_to_markdown(all_bib_file, overwrite=(args.refetch_all or args.regenerate_markdown))
+        log.info('Converted all.bib to Markdown')
+    except Exception as e:
+        log.error(f'Failed to convert BibTeX: {e}')
 
     # Write a timestamp into data/orcid/timestamp.txt
     from datetime import datetime
