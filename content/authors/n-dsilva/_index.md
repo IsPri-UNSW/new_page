@@ -2,7 +2,7 @@
 # Display name
 title: Nicholas D'Silva
 
-slug: n-d'silva
+slug: n-dsilva
 
 # Full Name (for SEO)
 first_name: Nicholas

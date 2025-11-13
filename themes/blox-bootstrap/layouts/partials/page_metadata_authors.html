@@ -16,10 +16,11 @@
 
     {{- $author_url := "" -}}
     {{- if $author_page -}}
-      {{- $author_url = $author_page.Permalink -}}
+      {{- $author_url = $author_page.RelPermalink -}}
     {{- else -}}
       {{- $author_url = .RelPermalink -}}
     {{- end -}}
+    {{ printf "Author URL: %s\n" $author_url | safeHTML }}
 
     {{- /* Highlight the author's name? */ -}}
     {{- $highlight_name := $author_page.Params.highlight_name | default false -}}
