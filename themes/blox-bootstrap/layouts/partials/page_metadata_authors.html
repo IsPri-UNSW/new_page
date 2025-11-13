@@ -3,34 +3,16 @@
 {{- $taxonomy := "authors" }}
 {{ if .Param $taxonomy }}
   {{ range $index, $value := (.GetTerms $taxonomy) }}
-    {{- $author_name := .LinkTitle -}}
-    <!-- {{ printf "Author name: %s\n" $author_name | safeHTML }} -->
-
-    {{- /* Get author slug and page */ -}}
-    {{- $author_slug := partial "get_author_slug.html" $author_name -}}
-    <!-- {{ printf "Author slug: %s\n" $author_slug | safeHTML }} -->
-    {{- /* GetPage needs the content path, not the permalink */ -}}
-    {{- $author_page := site.GetPage (printf "/authors/%s" $author_slug) -}}
-    <!-- {{ printf "Author page object: %v\n" $author_page | safeHTML }} -->
-    {{- /* Build the URL from the page's permalink (which respects the slug in front matter) */ -}}
-
-    {{- $author_url := "" -}}
-    {{- if $author_page -}}
-      {{- $author_url = $author_page.RelPermalink -}}
-    {{- else -}}
-      {{- $author_url = .RelPermalink -}}
-    {{- end -}}
-    <!-- {{ printf "Author URL: %s\n" $author_url | safeHTML }} -->
-
     {{- /* Highlight the author's name? */ -}}
-    {{- $highlight_name := $author_page.Params.highlight_name | default false -}}
+    {{- $highlight_name := .Page.Params.highlight_name | default false -}}
 
     {{- if gt $index 0 }}, {{ end -}}
     <span {{ if $highlight_name }}class="author-highlighted"{{end}}>
-      {{- if $author_url -}}
-        <a href="{{$author_url}}">{{$author_name}}</a>
+      {{/* Effectively check the page's `_build` option as `_build` is not exposed in Hugo's Page object. */}}
+      {{- if .RelPermalink -}}
+        <a href="{{.RelPermalink}}">{{.LinkTitle}}</a>
       {{- else -}}
-        {{ $author_name }}
+        {{ .LinkTitle }}
       {{- end -}}
     </span>
     {{- if isset $.Params "author_notes" -}}
