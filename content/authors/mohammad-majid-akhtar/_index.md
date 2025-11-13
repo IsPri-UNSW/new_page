@@ -2,6 +2,8 @@
 # Display name
 title: Mohammad Majid Akhtar
 
+slug: m-akhtar
+
 # Full Name (for SEO)
 first_name: Mohammad Majid
 last_name: Akhtar

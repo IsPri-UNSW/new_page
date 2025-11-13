@@ -2,6 +2,8 @@
 # Display name
 title: Xinzhang Chen
 
+slug: x-chen
+
 # Full Name (for SEO)
 first_name: Xinzhang
 last_name: Chen

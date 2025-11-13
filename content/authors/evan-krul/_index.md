@@ -2,6 +2,8 @@
 # Display name
 title: Evan Krul
 
+slug: e-krul
+
 # Full Name (for SEO)
 first_name: Evan
 last_name: Krul

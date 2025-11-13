@@ -2,6 +2,8 @@
 # Display name
 title: Lihua Wang
 
+slug: l-wang
+
 # Full Name (for SEO)
 first_name: Lihua
 last_name: Wang

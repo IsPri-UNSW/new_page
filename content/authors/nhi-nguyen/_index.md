@@ -2,6 +2,8 @@
 # Display name
 title: Nhi Nguyen
 
+slug: n-nguyen
+
 # Full Name (for SEO)
 first_name: Nhi
 last_name: Nguyen

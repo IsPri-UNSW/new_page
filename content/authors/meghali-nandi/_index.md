@@ -2,6 +2,8 @@
 # Display name
 title: Meghali Nandi
 
+slug: m-nandi
+
 # Full Name (for SEO)
 first_name: Meghali
 last_name: Nandi

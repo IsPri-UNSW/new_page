@@ -2,6 +2,8 @@
 # Display name
 title: Nicholas D'Silva
 
+slug: n-d'silva
+
 # Full Name (for SEO)
 first_name: Nicholas
 last_name: D'Silva

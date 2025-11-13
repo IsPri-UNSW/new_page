@@ -2,6 +2,8 @@
 # Display name
 title: Sushmita Ruj
 
+slug: s-ruj
+
 # Full Name (for SEO)
 first_name: Sushmita
 last_name: Ruj

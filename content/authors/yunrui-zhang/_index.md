@@ -2,6 +2,8 @@
 # Display name
 title: Yunrui Zhang
 
+slug: y-zhang
+
 # Full Name (for SEO)
 first_name: Yunrui
 last_name: Zhang

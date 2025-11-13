@@ -2,6 +2,8 @@
 # Display name
 title: Hassan Ali
 
+slug: h-ali
+
 # Full Name (for SEO)
 first_name: Hassan
 last_name: Ali

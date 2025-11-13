@@ -2,6 +2,8 @@
 # Display name
 title: Khoa-Dang Tran
 
+slug: k-tran
+
 # Full Name (for SEO)
 first_name: Khoa-Dang
 last_name: Tran

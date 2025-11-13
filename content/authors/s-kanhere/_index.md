@@ -2,6 +2,8 @@
 # Display name
 title: Salil S. Kanhere
 
+slug: s-kanhere
+
 # Full Name (for SEO)
 first_name: Salil S.
 last_name: Kanhere

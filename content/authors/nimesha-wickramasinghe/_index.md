@@ -2,6 +2,8 @@
 # Display name
 title: Nimesha Wickramasinghe
 
+slug: n-wickramasinghe
+
 # Full Name (for SEO)
 first_name: Nimesha
 last_name: Wickramasinghe

@@ -2,6 +2,9 @@
 # Display name
 title: Erik Buchholz
 
+# Slug: Manually set to fix issues with publication page
+slug: e-buchholz
+
 # Full Name (for SEO)
 first_name: Erik
 last_name: Buchholz

@@ -2,6 +2,8 @@
 # Display name
 title: Siriboon Chaisawat
 
+slug: s-chaisawat
+
 # Full Name (for SEO)
 first_name: Siriboon
 last_name: Chaisawat

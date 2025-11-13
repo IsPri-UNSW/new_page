@@ -2,6 +2,8 @@
 # Display name
 title: Rahat Masood
 
+slug: r-masood
+
 # Full Name (for SEO)
 first_name: Rahat
 last_name: Masood

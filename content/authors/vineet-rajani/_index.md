@@ -2,6 +2,8 @@
 # Display name
 title: Vineet Rajani
 
+slug: v-rajani
+
 # Full Name (for SEO)
 first_name: Vineet
 last_name: Rajani
