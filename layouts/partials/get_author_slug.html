@@ -1,11 +1,15 @@
 {{/*
   Takes an author's full name as input and returns a normalized slug.
   Example: "Salil S. Kanhere" -> "s-kanhere"
+  Example: "Nicholas D'Silva" -> "n-dsilva"
 */}}
 {{- $name_parts := split . " " -}}
 {{- if ge (len $name_parts) 1 -}}
   {{- $first_part := index $name_parts 0 -}}
   {{- $first_initial := substr $first_part 0 1 | lower -}}
   {{- $last_name := index $name_parts (sub (len $name_parts) 1) | lower -}}
+  {{- $last_name = replace $last_name "'" "" -}}
+  {{- $last_name = replace $last_name "'" "" -}}
+  {{- $last_name = replace $last_name "`" "" -}}
   {{- printf "%s-%s" $first_initial $last_name -}}
 {{- end -}}
