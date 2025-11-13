@@ -20,7 +20,7 @@
     {{- else -}}
       {{- $author_url = .RelPermalink -}}
     {{- end -}}
-    {{ printf "Author URL: %s\n" $author_url | safeHTML }}
+    <!-- {{ printf "Author URL: %s\n" $author_url | safeHTML }} -->
 
     {{- /* Highlight the author's name? */ -}}
     {{- $highlight_name := $author_page.Params.highlight_name | default false -}}
