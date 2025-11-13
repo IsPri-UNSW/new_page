@@ -20,41 +20,29 @@
       {{ partial $widget $params }}
     {{end}}
 
-    {{/* Build list of name variations to match */}}
-    {{ $author_names := slice .Title }}
-    {{ if .Params.first_name }}
-      {{ $first := .Params.first_name }}
-      {{ $last := .Params.last_name }}
-      {{ $first_initial := substr $first 0 1 }}
-      {{ $first_no_dot := replace $first "." "" }}
-      {{ $first_initial_no_dot := substr $first_no_dot 0 1 }}
-      
-      {{/* Add variations: Full name, First initial, First initial no dot, etc. */}}
-      {{ $author_names = $author_names | append (printf "%s %s" $first $last) }}
-      {{ $author_names = $author_names | append (printf "%s %s" $first_initial $last) }}
-      {{ $author_names = $author_names | append (printf "%s%s" $first_initial_no_dot $last) }}
-      {{ $author_names = $author_names | append (printf "%s %s" $first_no_dot $last) }}
-      {{ $author_names = $author_names | append $last }}
-    {{ end }}
-    
-    {{/* Get publications matching any name variation */}}
+    {{/* Match publications based on last name + first initial */}}
     {{ $matched_pubs := slice }}
     {{ $author_page := . }}
-    {{ range site.RegularPages }}
-      {{ $pub := . }}
-      {{ if eq $pub.Type "publication" }}
-        {{ if $pub.Params.authors }}
-          {{ $pub_authors := $pub.Params.authors }}
-          {{ range $author_names }}
-            {{ $search_name := . }}
-            {{ if in $pub_authors $search_name }}
-              {{ $matched_pubs = $matched_pubs | append $pub }}
+    {{ if .Params.first_name }}
+      {{ $first_initial := substr .Params.first_name 0 1 }}
+      {{ $last := .Params.last_name }}
+      
+      {{ range site.RegularPages }}
+        {{ $pub := . }}
+        {{ if eq $pub.Type "publication" }}
+          {{ if $pub.Params.authors }}
+            {{ range $pub.Params.authors }}
+              {{ $pub_author := . }}
+              {{/* Check if author contains the last name and starts with first initial */}}
+              {{ if and (in $pub_author $last) (hasPrefix $pub_author $first_initial) }}
+                {{ $matched_pubs = $matched_pubs | append $pub }}
+              {{ end }}
             {{ end }}
           {{ end }}
         {{ end }}
       {{ end }}
+      {{ $matched_pubs = uniq $matched_pubs }}
     {{ end }}
-    {{ $matched_pubs = uniq $matched_pubs }}
     
     {{/* Also include taxonomy-matched pages */}}
     {{ $query := where .Pages ".IsNode" false }}
